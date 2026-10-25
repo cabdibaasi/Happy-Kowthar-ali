@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Happy Birthday, Kowsarr Ali | A Special Birthday Experience</title>
+  
+  <!-- Premium Google Fonts: Playfair Display, Cormorant Garamond, Alex Brush (Romantic Script), & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Luxury Background: Animated Mesh Glow & Shimmer Orbs -->
+  <div class="ambient-background" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+    <div class="mesh-texture"></div>
+  </div>
+
+  <!-- Interactive Canvases: Ambient Petals/Stars, Cursor Stardust, Confetti -->
+  <canvas id="ambientCanvas" aria-hidden="true"></canvas>
+  <canvas id="cursorCanvas" aria-hidden="true"></canvas>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- Audio Element for Full Song (with fallback to synthesized melody) -->
+  <audio id="bgMusicTrack" loop preload="auto">
+    <source src="https://ia801503.us.archive.org/15/items/hawayein-song/Hawayein.mp3" type="audio/mpeg">
+    <source src="hawayein.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Fullscreen Balloon Celebration Container -->
+  <div id="balloonCelebrationOverlay" class="balloon-celebration-overlay" aria-hidden="true"></div>
+
+  <!-- Header Controls: Sound Toggle & Aesthetic Badge -->
+  <header class="app-header">
+    <div class="experience-brand">
+      <span class="brand-monogram">KA</span>
+      <span class="brand-subtext">A Special Birthday Tribute</span>
+    </div>
+    <button id="musicToggleBtn" class="sound-toggle-btn" type="button" aria-label="Toggle Hawayein Hindi romantic melody">
+      <span class="sound-icon" aria-hidden="true">🎵</span>
+      <span class="sound-label">Hawayein: Off</span>
+    </button>
+  </header>
+
+  <!-- Main Multi-Screen Container -->
+  <main class="experience-stage">
+
+    <!-- ====================================================================
+         SCREEN 01: Birthday Welcome
+         ==================================================================== -->
+    <section id="screen1" class="screen active" aria-labelledby="screen1Heading">
+      <div class="glass-card welcome-card">
+        <!-- Luxury Filigree Header -->
+        <div class="card-ornament top-ornament" aria-hidden="true">
+          <svg viewBox="0 0 160 24" class="ornament-svg">
+            <path d="M 0,12 Q 40,2 80,12 Q 120,22 160,12" stroke="url(#goldGradient)" stroke-width="1.2" fill="none"/>
+            <circle cx="80" cy="12" r="3" fill="#d4af37"/>
+            <circle cx="50" cy="12" r="1.5" fill="#e6b87d"/>
+            <circle cx="110" cy="12" r="1.5" fill="#e6b87d"/>
+            <defs>
+              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="transparent"/>
+                <stop offset="50%" stop-color="#d4af37"/>
+                <stop offset="100%" stop-color="transparent"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <span class="badge-subtitle">Exclusive Birthday Celebration</span>
+        <h1 id="screen1Heading" class="hero-title">
+          Happy Birthday, <span class="gold-gradient-text shimmer-text">Kowsarr Ali!</span>
+        </h1>
+        <p class="hero-tagline">A day as extraordinary, radiant, and wonderful as you are</p>
+
+        <!-- Illustrated Cake with glowing candles and floating balloons -->
+        <div class="welcome-cake-scene" aria-hidden="true">
+          <!-- Left Floating Balloon -->
+          <div class="floating-balloon balloon-left">
+            <div class="balloon-sphere balloon-blush">
+              <span class="balloon-highlight"></span>
+            </div>
+            <div class="balloon-cord"></div>
+          </div>
+
+          <!-- Birthday Cake -->
+          <div class="cake-monument">
+            <div class="candle-unit">
+              <div class="flame-halo"></div>
+              <div class="flame-core"></div>
+              <div class="flame-sparkles"><i></i><i></i></div>
+              <div class="candle-body"></div>
+            </div>
+            <div class="cake-tier tier-top">
+              <div class="frosting-scallops">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="cake-tier tier-mid">
+              <div class="pearl-trim">
+                <i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+            <div class="cake-tier tier-low">
+              <div class="gold-accent-line"></div>
+            </div>
+            <div class="cake-stand"></div>
+          </div>
+
+          <!-- Right Floating Balloon -->
+          <div class="floating-balloon balloon-right">
+            <div class="balloon-sphere balloon-gold">
+              <span class="balloon-highlight"></span>
+            </div>
+            <div class="balloon-cord"></div>
+          </div>
+        </div>
+
+        <!-- Question & Interactive Buttons -->
+        <div class="interactive-prompt-block">
+          <p class="prompt-question">Are you happy today, Kowsarr? ❤️</p>
+          <div class="btn-cluster" id="welcomeBtnCluster">
+            <button id="btnYes" class="btn btn-primary btn-glow" type="button">
+              <span class="btn-shimmer-sweep"></span>
+              <span class="btn-text">YES, I'M HAPPY ❤️</span>
+            </button>
+            <button id="btnNo" class="btn btn-secondary" type="button">
+              <span class="btn-text">NO 🙈</span>
+            </button>
+          </div>
+          <p id="playfulHint" class="playful-feedback" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 02: Tap to Pop Balloons & Reveal Hidden Messages ("Ha Baqo!")
+         ==================================================================== -->
+    <section id="screen2" class="screen" aria-labelledby="screen2Heading">
+      <div class="glass-card words-card">
+        <div class="card-ornament top-ornament" aria-hidden="true">
+          <svg viewBox="0 0 160 24" class="ornament-svg">
+            <path d="M 0,12 Q 40,2 80,12 Q 120,22 160,12" stroke="#d4af37" stroke-width="1.2" fill="none"/>
+            <circle cx="80" cy="12" r="3" fill="#d4af37"/>
+          </svg>
+        </div>
+
+        <span class="badge-subtitle">Interactive Balloon Surprise</span>
+        <h2 id="screen2Heading" class="screen-title">Pop The Balloons For You! 🎈💥</h2>
+        <p class="screen-subtext">Tap each balloon to pop it and reveal the heartfelt message hidden underneath!</p>
+
+        <!-- Pop Progress Tracker -->
+        <div class="pop-progress-bar">
+          <span class="pop-counter-pill" id="popCounterPill">Balloons Popped: 0 / 4</span>
+          <span class="pop-hint-sub">Tap any balloon to pop it! 👆</span>
+        </div>
+
+        <!-- 4 Pop-To-Reveal Balloon Pods -->
+        <div class="balloon-pop-grid" id="balloonPopGrid">
+          
+          <!-- Pod 1: YOU -->
+          <div class="balloon-pod" id="balloonPod0" data-index="0" role="button" tabindex="0" aria-label="Balloon 1: Tap to pop and reveal message">
+            <!-- Hidden Message Card (revealed when balloon pops) -->
+            <div class="hidden-message-card">
+              <div class="message-card-inner">
+                <span class="message-badge">01</span>
+                <span class="message-keyword">YOU</span>
+                <p class="message-sentence">“You bring endless light and radiant joy to the world.”</p>
+                <span class="message-sparkle">✨</span>
+              </div>
+            </div>
+
+            <!-- Floating Balloon Cover on Top -->
+            <div class="balloon-cover balloon-pink" id="balloonCover0">
+              <div class="balloon-cover-globe">
+                <span class="balloon-shine-light"></span>
+                <span class="balloon-pop-icon">🎈</span>
+                <span class="balloon-tap-label">TAP TO POP 💥</span>
+                <div class="balloon-tie-knot"></div>
+              </div>
+              <div class="balloon-string-curved"></div>
+            </div>
+          </div>
+
+          <!-- Pod 2: ARE -->
+          <div class="balloon-pod" id="balloonPod1" data-index="1" role="button" tabindex="0" aria-label="Balloon 2: Tap to pop and reveal message">
+            <div class="hidden-message-card">
+              <div class="message-card-inner">
+                <span class="message-badge">02</span>
+                <span class="message-keyword">ARE</span>
+                <p class="message-sentence">“Are a true blessing to every soul fortunate to know you.”</p>
+                <span class="message-sparkle">✨</span>
+              </div>
+            </div>
+
+            <div class="balloon-cover balloon-gold" id="balloonCover1">
+              <div class="balloon-cover-globe">
+                <span class="balloon-shine-light"></span>
+                <span class="balloon-pop-icon">🎈</span>
+                <span class="balloon-tap-label">TAP TO POP 💥</span>
+                <div class="balloon-tie-knot"></div>
+              </div>
+              <div class="balloon-string-curved"></div>
+            </div>
+          </div>
+
+          <!-- Pod 3: SO -->
+          <div class="balloon-pod" id="balloonPod2" data-index="2" role="button" tabindex="0" aria-label="Balloon 3: Tap to pop and reveal message">
+            <div class="hidden-message-card">
+              <div class="message-card-inner">
+                <span class="message-badge">03</span>
+                <span class="message-keyword">SO</span>
+                <p class="message-sentence">“So full of grace, genuine beauty, and pure warmth.”</p>
+                <span class="message-sparkle">✨</span>
+              </div>
+            </div>
+
+            <div class="balloon-cover balloon-rose" id="balloonCover2">
+              <div class="balloon-cover-globe">
+                <span class="balloon-shine-light"></span>
+                <span class="balloon-pop-icon">🎈</span>
+                <span class="balloon-tap-label">TAP TO POP 💥</span>
+                <div class="balloon-tie-knot"></div>
+              </div>
+              <div class="balloon-string-curved"></div>
+            </div>
+          </div>
+
+          <!-- Pod 4: SPECIAL -->
+          <div class="balloon-pod" id="balloonPod3" data-index="3" role="button" tabindex="0" aria-label="Balloon 4: Tap to pop and reveal message">
+            <div class="hidden-message-card">
+              <div class="message-card-inner">
+                <span class="message-badge">04</span>
+                <span class="message-keyword">SPECIAL</span>
+                <p class="message-sentence">“Special beyond any words that could ever be written.”</p>
+                <span class="message-sparkle">✨</span>
+              </div>
+            </div>
+
+            <div class="balloon-cover balloon-coral" id="balloonCover3">
+              <div class="balloon-cover-globe">
+                <span class="balloon-shine-light"></span>
+                <span class="balloon-pop-icon">🎈</span>
+                <span class="balloon-tap-label">TAP TO POP 💥</span>
+                <div class="balloon-tie-knot"></div>
+              </div>
+              <div class="balloon-string-curved"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Combined Centered Message (Unites when all 4 are popped!) -->
+        <div id="unifiedMessageBlock" class="unified-message-block">
+          <div class="message-banner-gold">
+            <div class="banner-sparkle-accents">
+              <span class="sparkle-dot top-left">✦</span>
+              <span class="sparkle-dot top-right">✦</span>
+              <span class="sparkle-dot bottom-left">✦</span>
+              <span class="sparkle-dot bottom-right">✦</span>
+            </div>
+            <h3 class="unified-headline shimmer-text">“YOU ARE SO SPECIAL ❤️”</h3>
+            <p class="unified-quote">All four messages revealed and united together for Kowsarr Ali.</p>
+          </div>
+          <button id="btnContinueScreen2" class="btn btn-primary mt-6 continue-btn" type="button">
+            <span class="btn-shimmer-sweep"></span>
+            <span class="btn-text">CONTINUE ✨</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 03: Cake and Flower Surprise
+         ==================================================================== -->
+    <section id="screen3" class="screen" aria-labelledby="screen3Heading">
+      <div class="glass-card surprise-card">
+        <div class="card-ornament top-ornament" aria-hidden="true">
+          <svg viewBox="0 0 160 24" class="ornament-svg">
+            <path d="M 0,12 Q 40,2 80,12 Q 120,22 160,12" stroke="#d4af37" stroke-width="1.2" fill="none"/>
+            <circle cx="80" cy="12" r="3" fill="#d4af37"/>
+          </svg>
+        </div>
+
+        <span class="badge-subtitle">Make A Birthday Wish</span>
+        <h2 id="screen3Heading" class="screen-title">A Sweet Birthday Wish</h2>
+
+        <div class="cake-stage-container">
+          <!-- Personalized Illustrated Cake with Kowsarr Ali -->
+          <div class="dedicated-cake-box" id="dedicatedCakeBox">
+            <div class="dedicated-candle">
+              <div class="flame-halo"></div>
+              <div class="flame-core" id="cakeFlame"></div>
+              <div class="candle-stem"></div>
+            </div>
+            
+            <div class="d-tier d-tier-1">
+              <div class="fondant-dots">
+                <i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+            
+            <div class="d-tier d-tier-2">
+              <div class="personalized-plaque">
+                <span class="plaque-crown">👑</span>
+                <span class="name-script">Kowsarr Ali</span>
+              </div>
+            </div>
+
+            <div class="d-tier d-tier-3">
+              <div class="champagne-piping"></div>
+            </div>
+
+            <div class="d-cake-plate"></div>
+          </div>
+
+          <!-- Timed Wish Prompt (Revealed after 2s) -->
+          <div id="timedWishPrompt" class="wish-prompt-reveal">
+            <p class="romantic-italic-script">“Close your eyes and make a wish… ✨”</p>
+          </div>
+
+          <!-- Large Elegant Flower Bouquet (Revealed after 3 more seconds with blooming animation) -->
+          <div id="bloomingBouquetStage" class="blooming-bouquet-stage">
+            <div class="flower-ambient-glow"></div>
+            
+            <div class="svg-bouquet-frame">
+              <svg viewBox="0 0 340 340" class="bouquet-svg" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="roseGradient1" cx="40%" cy="40%" r="60%">
+                    <stop offset="0%" stop-color="#fff0f5"/>
+                    <stop offset="40%" stop-color="#f8bbd0"/>
+                    <stop offset="85%" stop-color="#e91e63"/>
+                    <stop offset="100%" stop-color="#880e4f"/>
+                  </radialGradient>
+                  <radialGradient id="roseGradient2" cx="40%" cy="40%" r="60%">
+                    <stop offset="0%" stop-color="#fff5eb"/>
+                    <stop offset="45%" stop-color="#ffccbc"/>
+                    <stop offset="85%" stop-color="#f4511e"/>
+                    <stop offset="100%" stop-color="#bf360c"/>
+                  </radialGradient>
+                  <radialGradient id="roseGradientCenter" cx="45%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="30%" stop-color="#fce4ec"/>
+                    <stop offset="65%" stop-color="#ec407a"/>
+                    <stop offset="90%" stop-color="#ad1457"/>
+                    <stop offset="100%" stop-color="#4a0022"/>
+                  </radialGradient>
+                  <filter id="bloomGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="4" result="glow"/>
+                    <feComposite in="SourceGraphic" in2="glow" operator="over"/>
+                  </filter>
+                </defs>
+
+                <!-- Bouquet Stems -->
+                <path d="M170 325 Q168 240 160 190" stroke="#526d3e" stroke-width="8" stroke-linecap="round"/>
+                <path d="M170 305 Q125 250 110 180" stroke="#465e34" stroke-width="6.5" stroke-linecap="round"/>
+                <path d="M170 305 Q215 250 230 180" stroke="#465e34" stroke-width="6.5" stroke-linecap="round"/>
+                <path d="M170 315 Q145 230 135 150" stroke="#526d3e" stroke-width="5" stroke-linecap="round"/>
+                <path d="M170 315 Q195 230 205 150" stroke="#526d3e" stroke-width="5" stroke-linecap="round"/>
+
+                <!-- Deep emerald and olive leaves with leaf veins -->
+                <path d="M130 240 Q85 220 95 165 Q140 195 130 240 Z" fill="#5f7c4b" filter="url(#bloomGlow)"/>
+                <path d="M210 240 Q255 220 245 165 Q200 195 210 240 Z" fill="#5f7c4b" filter="url(#bloomGlow)"/>
+                <path d="M150 268 Q100 290 105 245 Q145 255 150 268 Z" fill="#4d673a"/>
+                <path d="M190 268 Q240 290 235 245 Q195 255 190 268 Z" fill="#4d673a"/>
+
+                <!-- Flowing Gold Ribbon -->
+                <path d="M150 285 Q170 308 190 285 Q170 322 150 285 Z" fill="#d4af37"/>
+                <path d="M155 295 Q138 335 130 340" stroke="#e6b87d" stroke-width="4.5" stroke-linecap="round"/>
+                <path d="M185 295 Q202 335 210 340" stroke="#e6b87d" stroke-width="4.5" stroke-linecap="round"/>
+
+                <!-- Left Soft Blush Rose -->
+                <g class="rose-bloom bloom-left" transform="translate(108, 150)">
+                  <circle cx="0" cy="0" r="32" fill="url(#roseGradient1)"/>
+                  <path d="M -20,-14 C -10,-30 18,-24 22,-8 C 24,12 2,26 -20,14 Z" fill="#f06292" opacity="0.9"/>
+                  <circle cx="0" cy="0" r="18" fill="#d81b60" opacity="0.85"/>
+                  <path d="M -7,-7 Q 7,-14 11,0 Q 2,11 -9,4 Z" fill="#880e4f"/>
+                </g>
+
+                <!-- Right Delicate Coral Rose -->
+                <g class="rose-bloom bloom-right" transform="translate(232, 150)">
+                  <circle cx="0" cy="0" r="32" fill="url(#roseGradient2)"/>
+                  <path d="M -20,-14 C -10,-30 18,-24 22,-8 C 24,12 2,26 -20,14 Z" fill="#ff7043" opacity="0.9"/>
+                  <circle cx="0" cy="0" r="18" fill="#e64a19" opacity="0.85"/>
+                  <path d="M -7,-7 Q 7,-14 11,0 Q 2,11 -9,4 Z" fill="#bf360c"/>
+                </g>
+
+                <!-- Center Grand English Peony / Royal Rose -->
+                <g class="rose-bloom bloom-center" transform="translate(170, 122)">
+                  <circle cx="0" cy="0" r="48" fill="url(#roseGradientCenter)"/>
+                  <circle cx="-20" cy="-18" r="26" fill="#f48fb1" opacity="0.95"/>
+                  <circle cx="20" cy="-18" r="26" fill="#f48fb1" opacity="0.95"/>
+                  <circle cx="0" cy="24" r="28" fill="#ec407a" opacity="0.95"/>
+                  <circle cx="0" cy="0" r="30" fill="#d81b60"/>
+                  <path d="M -22,-7 C -18,-26 18,-26 22,-7 C 24,18 -7,26 -22,-7 Z" fill="#c2185b"/>
+                  <circle cx="0" cy="0" r="15" fill="#880e4f"/>
+                  <path d="M -8,-8 Q 6,-15 10,-2 Q 7,10 -8,5 Z" fill="#ffffff" opacity="0.4"/>
+                </g>
+
+                <!-- Starlight & Baby's Breath Accents -->
+                <g class="floret" transform="translate(138, 72)">
+                  <circle cx="0" cy="0" r="9" fill="#ffffff" stroke="#e6b87d" stroke-width="2"/>
+                  <circle cx="0" cy="0" r="4" fill="#d4af37"/>
+                </g>
+                <g class="floret" transform="translate(202, 72)">
+                  <circle cx="0" cy="0" r="9" fill="#ffffff" stroke="#e6b87d" stroke-width="2"/>
+                  <circle cx="0" cy="0" r="4" fill="#d4af37"/>
+                </g>
+                <g class="floret" transform="translate(170, 52)">
+                  <circle cx="0" cy="0" r="10" fill="#ffffff" stroke="#e6b87d" stroke-width="2"/>
+                  <circle cx="0" cy="0" r="4.5" fill="#d4af37"/>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Short message after blooming -->
+            <p class="bouquet-wish-quote">“May all your beautiful wishes come true. 🌸”</p>
+          </div>
+        </div>
+
+        <button id="btnContinueScreen3" class="btn btn-primary mt-6 delayed-continue-btn" type="button">
+          <span class="btn-shimmer-sweep"></span>
+          <span class="btn-text">CONTINUE 🌸</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 04: Birthday Celebration Gallery (Interactive Stacked Deck)
+         ==================================================================== -->
+    <section id="screen4" class="screen" aria-labelledby="screen4Heading">
+      <div class="glass-card gallery-screen-card">
+        <div class="card-ornament top-ornament" aria-hidden="true">
+          <svg viewBox="0 0 160 24" class="ornament-svg">
+            <path d="M 0,12 Q 40,2 80,12 Q 120,22 160,12" stroke="#d4af37" stroke-width="1.2" fill="none"/>
+            <circle cx="80" cy="12" r="3" fill="#d4af37"/>
+          </svg>
+        </div>
+
+        <span class="badge-subtitle">Timeless Memories</span>
+        <h2 id="screen4Heading" class="screen-title">Birthday Celebration Gallery</h2>
+        <p class="screen-subtext">Tap each photo card to reveal the next memory</p>
+
+        <!-- Stacked Photo Deck ("Is Korsar" Card Stack) -->
+        <div class="gallery-stack-section">
+          <!-- Stack Header Indicator -->
+          <div class="stack-indicator-bar">
+            <span class="stack-counter-badge" id="stackCounter">Memory 1 of 2</span>
+            <span class="stack-hint-pill">Tap photo to flip 💫</span>
+          </div>
+
+          <!-- Stack Viewport where cards sit on top of each other -->
+          <div class="gallery-stack-viewport" id="galleryStackViewport" role="region" aria-label="Photo memory card stack">
+            <!-- Card 1: Kowsarr Photo 1 -->
+            <article class="stacked-photo-card pos-0" id="galleryCard0" tabindex="0" role="button" aria-label="Memory 1 of Kowsarr Ali. Tap to reveal next.">
+              <div class="photo-card-gold-frame">
+                <div class="photo-media-wrapper">
+                  <img 
+                    src="kowsarr1.jpg" 
+                    alt="Kowsarr Ali - Beautiful Birthday Smile" 
+                    class="photo-media-img"
+                    loading="eager"
+                  />
+                  <div class="photo-corner-badge">01</div>
+                  <div class="photo-tap-guide"><span class="guide-icon">👆</span> Tap next</div>
+                </div>
+                <div class="photo-details-box">
+                  <span class="photo-tag-stamp">KOWSARR ALI</span>
+                  <h3 class="photo-title">HAPPY BIRTHDAY 🎂</h3>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2: Kowsarr Photo 2 -->
+            <article class="stacked-photo-card pos-1" id="galleryCard1" tabindex="0" role="button" aria-label="Memory 2 of Kowsarr Ali. Tap to reveal next.">
+              <div class="photo-card-gold-frame">
+                <div class="photo-media-wrapper">
+                  <img 
+                    src="kowsarr2.jpg" 
+                    alt="Kowsarr Ali - Pure Beauty & Grace" 
+                    class="photo-media-img"
+                    loading="eager"
+                  />
+                  <div class="photo-corner-badge">02</div>
+                  <div class="photo-tap-guide"><span class="guide-icon">👆</span> Tap next</div>
+                </div>
+                <div class="photo-details-box">
+                  <span class="photo-tag-stamp">MY HEART</span>
+                  <h3 class="photo-title">CELEBRATING YOU ❤️</h3>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Stack Pagination Dots -->
+          <div class="stack-pagination-dots" id="stackDots" aria-hidden="true">
+            <span class="stack-dot active" data-index="0"></span>
+            <span class="stack-dot" data-index="1"></span>
+          </div>
+        </div>
+
+        <!-- Heartfelt Bottom Quote -->
+        <div class="gallery-bottom-quote-box">
+          <p class="bottom-quote-text">“Your day deserves a thousand beautiful memories. ❤️”</p>
+        </div>
+
+        <button id="btnContinueScreen4" class="btn btn-primary mt-6 continue-btn" type="button">
+          <span class="btn-shimmer-sweep"></span>
+          <span class="btn-text">CONTINUE ❤️</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 05: The Secret Birthday Letter (Redesigned Couture Envelope)
+         ==================================================================== -->
+    <section id="screen5" class="screen" aria-labelledby="screen5Heading">
+      <div class="glass-card letter-stage-card">
+        <div class="card-ornament top-ornament" aria-hidden="true">
+          <svg viewBox="0 0 160 24" class="ornament-svg">
+            <path d="M 0,12 Q 40,2 80,12 Q 120,22 160,12" stroke="#d4af37" stroke-width="1.2" fill="none"/>
+            <circle cx="80" cy="12" r="3" fill="#d4af37"/>
+          </svg>
+        </div>
+
+        <span class="badge-subtitle">A Heartfelt Whisper</span>
+        
+        <!-- Pre-opening teaser prompt -->
+        <h2 id="screen5Heading" class="letter-teaser-headline shimmer-text">
+          “Kowsarr, I have something special to tell you…”
+        </h2>
+        <p class="letter-teaser-subtext">Click the royal wax seal to break it open and unfold your letter</p>
+
+        <!-- Centered Interactive Couture Envelope -->
+        <div class="envelope-theatre" id="envelopeTheatre">
+          <div class="couture-envelope" id="luxuryEnvelope" role="button" tabindex="0" aria-label="Open birthday letter for Kowsarr Ali">
+            
+            <!-- Envelope Interior Lining with Gold Damask -->
+            <div class="env-interior-wall">
+              <div class="env-damask-pattern"></div>
+            </div>
+
+            <!-- The Letter Sheet that slides & unfolds from within -->
+            <article class="letter-parchment" id="letterParchment">
+              <div class="letter-border-frame">
+                <!-- Royal Corner Filigrees -->
+                <div class="parchment-corner-ornament tl">✦</div>
+                <div class="parchment-corner-ornament tr">✦</div>
+                <div class="parchment-corner-ornament bl">✦</div>
+                <div class="parchment-corner-ornament br">✦</div>
+
+                <div class="letter-header-monogram">
+                  <span class="letter-wax-stamp">💌</span>
+                  <span class="letter-pre-title">A Heartfelt Letter For You</span>
+                </div>
+
+                <p class="letter-heading">Dear Kowsarr Ali, ❤️</p>
+                
+                <p class="letter-paragraph">
+                  Today is all about you and the beautiful happiness you bring into the world.
+                </p>
+                <p class="letter-paragraph">
+                  I hope your birthday fills your heart with joy, your days with unforgettable memories, and your future with success and wonderful opportunities.
+                </p>
+                <p class="letter-paragraph">
+                  May every wish you make bring you closer to your dreams. Never forget how special you are and how much happiness you deserve.
+                </p>
+                <p class="letter-paragraph">
+                  May this new chapter of your life be filled with beautiful surprises, genuine smiles, and countless reasons to celebrate.
+                </p>
+
+                <p class="letter-signoff-line">
+                  Happy Birthday, Kowsarr Ali. May your special day be as wonderful as you are. 🎂🌹
+                </p>
+                <p class="letter-closing">
+                  With love, ❤️
+                </p>
+              </div>
+            </article>
+
+            <!-- Realistic Envelope Triangular Pocket Folds -->
+            <div class="env-pocket-base">
+              <!-- Vintage Postage Stamp (Top Right) -->
+              <div class="env-postal-stamp" aria-hidden="true">
+                <span class="stamp-crown">👑</span>
+                <span class="stamp-label">PAR AVION</span>
+                <span class="stamp-postmark"></span>
+              </div>
+
+              <!-- Calligraphic Hand-addressed Tag (Exterior Front) -->
+              <div class="env-address-plaque" aria-hidden="true">
+                <span class="address-for">For Dearest:</span>
+                <span class="address-name">Kowsarr Ali ❤️</span>
+              </div>
+            </div>
+
+            <div class="env-fold-left"></div>
+            <div class="env-fold-right"></div>
+            <div class="env-fold-bottom"></div>
+
+            <!-- 3D Triangular Top Flap -->
+            <div class="env-tri-flap" id="envTopFlap">
+              <div class="flap-gold-trim"></div>
+            </div>
+
+            <!-- Realistic 3D Organic Wax Seal -->
+            <div class="royal-wax-seal" id="heartSeal" aria-hidden="true">
+              <div class="wax-scallop-base"></div>
+              <div class="wax-inner-bevel">
+                <span class="seal-heart-emboss">❤️</span>
+                <span class="seal-inscription">SEALED</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <button id="btnContinueScreen5" class="btn btn-primary mt-6 delayed-continue-btn" type="button">
+          <span class="btn-shimmer-sweep"></span>
+          <span class="btn-text">CONTINUE ✨</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 06: The Final Gift
+         ==================================================================== -->
+    <section id="screen6" class="screen" aria-labelledby="screen6Heading">
+      <div class="glass-card gift-screen-card">
+        <div class="card-ornament top-ornament" aria-hidden="true">
+          <svg viewBox="0 0 160 24" class="ornament-svg">
+            <path d="M 0,12 Q 40,2 80,12 Q 120,22 160,12" stroke="#d4af37" stroke-width="1.2" fill="none"/>
+            <circle cx="80" cy="12" r="3" fill="#d4af37"/>
+          </svg>
+        </div>
+
+        <span class="badge-subtitle">Grand Finale</span>
+        <h2 id="screen6Heading" class="screen-title shimmer-text">One Last Surprise for You, Kowsarr… 🎁</h2>
+        <p class="screen-subtext">A gift wrapped with admiration, affection, and best wishes</p>
+
+        <!-- 3D Interactive Animated Gift Box -->
+        <div class="gift-theatre" id="giftTheatre">
+          <div class="gift-aura-glow" aria-hidden="true"></div>
+
+          <div class="luxury-gift-box" id="luxuryGiftBox" role="button" tabindex="0" aria-label="Open final gift">
+            <!-- Lid with ribbon & bow -->
+            <div class="gift-lid-unit" id="giftLidUnit">
+              <div class="lid-ribbon-stripe"></div>
+              <div class="gift-bow-assembly">
+                <span class="bow-ear ear-left"></span>
+                <span class="bow-ear ear-right"></span>
+                <span class="bow-center-knot"></span>
+              </div>
+            </div>
+
+            <!-- Box Base -->
+            <div class="gift-body-unit">
+              <div class="box-ribbon-vertical"></div>
+              <div class="box-ribbon-horizontal"></div>
+              <div class="gift-sparkle-specks"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prominent Open Button -->
+        <div id="giftTriggerArea" class="gift-trigger-area">
+          <button id="btnOpenGift" class="btn btn-primary btn-large btn-glow" type="button">
+            <span class="btn-shimmer-sweep"></span>
+            <span class="btn-text">OPEN YOUR GIFT ❤️</span>
+          </button>
+        </div>
+
+        <!-- Revealed Final Message Block -->
+        <div id="finalCelebrationReveal" class="final-celebration-reveal" aria-live="polite">
+          <div class="sparkle-crown-badge">
+            <span class="royal-crown-icon" aria-hidden="true">👑</span>
+          </div>
+
+          <h1 class="grand-birthday-title shimmer-text">HAPPY BIRTHDAY, KOWSARR ALI! ❤️🎂</h1>
+          <h2 class="grand-special-tag">YOU ARE SO SPECIAL.</h2>
+          
+          <div class="quote-framing-box">
+            <p class="grand-blessing-quote">
+              “May your life always be filled with happiness, love, beautiful memories, and dreams that come true. 🌸✨”
+            </p>
+          </div>
+
+          <div class="experience-controls-cluster">
+            <button id="btnReplay" class="btn btn-secondary" type="button">
+              <span class="btn-text">Replay Experience ↺</span>
+            </button>
+            <button id="btnExtraLove" class="btn btn-primary btn-glow" type="button">
+              <span class="btn-shimmer-sweep"></span>
+              <span class="btn-text">Shower Love 💖</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
